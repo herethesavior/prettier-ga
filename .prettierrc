@@ -44,17 +44,6 @@
         "xmlWhitespaceSensitivity": "strict",
         "parser": "xml"
       }
-    },
-    {
-      "files": "pmd-ruleset.xml",
-      "options": {
-        "printWidth": 120,
-        "tabWidth": 4,
-        "useTabs": false,
-        "xmlSelfClosingSpace": true,
-        "xmlWhitespaceSensitivity": "ignore",
-        "parser": "xml"
-      }
     }
   ]
 }
