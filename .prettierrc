@@ -2,6 +2,8 @@
   "endOfLine": "lf",
   "useTabs": false,
   "tabWidth": 2,
+  "plugins": ["prettier-plugin-apex"],
+  "trailingComma": "none",
   "overrides": [
     {
       "files": "*.{cls,apexc,trigger}",
