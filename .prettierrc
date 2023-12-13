@@ -2,6 +2,10 @@
   "endOfLine": "lf",
   "useTabs": false,
   "tabWidth": 2,
+  "plugins": ["prettier-plugin-apex"],
+  "trailingComma": "none",
+  "bracketSpacing": true,
+  "bracketSameLine": true,
   "overrides": [
     {
       "files": "*.{cls,apexc,trigger}",
@@ -9,7 +13,7 @@
         "printWidth": 100,
         "useTabs": false,
         "tabWidth": 4,
-        "apexInsertFinalNewline": true
+        "apexInsertFinalNewline": false
       }
     },
     {
@@ -18,7 +22,7 @@
         "printWidth": 100,
         "useTabs": false,
         "tabWidth": 4,
-        "apexInsertFinalNewline": true,
+        "apexInsertFinalNewline": false,
         "parser": "apex-anonymous"
       }
     },
