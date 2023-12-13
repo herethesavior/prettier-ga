@@ -2,7 +2,7 @@
   "endOfLine": "lf",
   "useTabs": false,
   "tabWidth": 2,
-  "plugins": ["prettier-plugin-apex","@prettier/plugin-xml"],
+  "plugins": ["prettier-plugin-apex", "@prettier/plugin-xml"],
   "trailingComma": "none",
   "bracketSpacing": true,
   "bracketSameLine": true,

@@ -25,5 +25,5 @@
     });
     // Enqueue action that returns a continuation
     $A.enqueueAction(action);
-  },
+  }
 });
