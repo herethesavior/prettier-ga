@@ -1,0 +1,60 @@
+{
+  "endOfLine": "lf",
+  "useTabs": false,
+  "tabWidth": 2,
+  "overrides": [
+    {
+      "files": "*.{cls,apexc,trigger}",
+      "options": {
+        "printWidth": 100,
+        "useTabs": false,
+        "tabWidth": 4,
+        "apexInsertFinalNewline": true
+      }
+    },
+    {
+      "files": "*.apex",
+      "options": {
+        "printWidth": 100,
+        "useTabs": false,
+        "tabWidth": 4,
+        "apexInsertFinalNewline": true,
+        "parser": "apex-anonymous"
+      }
+    },
+    {
+      "files": "**/lwc/**/*.html",
+      "options": {
+        "parser": "lwc"
+      }
+    },
+    {
+      "files": "*.{cmp,page,component}",
+      "options": { "parser": "html" }
+    },
+    {
+      "files": "*-meta.xml",
+      "options": {
+        "semi": false,
+        "tabWidth": 4,
+        "useTabs": false,
+        "bracketSameLine": true,
+        "xmlSelfClosingSpace": false,
+        "embeddedLanguageFormatting": "off",
+        "xmlWhitespaceSensitivity": "strict",
+        "parser": "xml"
+      }
+    },
+    {
+      "files": "pmd-ruleset.xml",
+      "options": {
+        "printWidth": 120,
+        "tabWidth": 4,
+        "useTabs": false,
+        "xmlSelfClosingSpace": true,
+        "xmlWhitespaceSensitivity": "ignore",
+        "parser": "xml"
+      }
+    }
+  ]
+}
