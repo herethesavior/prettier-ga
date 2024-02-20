@@ -4,36 +4,12 @@
   "version": "1.0.0",
   "description": "Prettier Github Action",
   "scripts": {
-    "lint": "eslint **/{aura,lwc}/**",
-    "test": "npm run test:unit",
-    "test:unit": "sfdx-lwc-jest",
-    "test:unit:watch": "sfdx-lwc-jest --watch",
-    "test:unit:debug": "sfdx-lwc-jest --debug",
-    "test:unit:coverage": "sfdx-lwc-jest --coverage",
     "prettier": "prettier --write \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
-    "prettier:verify": "prettier --list-different \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
-    "precommit": "lint-staged"
+    "prettier:verify": "prettier --list-different \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\""
   },
   "devDependencies": {
-    "@lwc/eslint-plugin-lwc": "^1.7.2",
     "@prettier/plugin-xml": "^3.2.2",
-    "@salesforce/eslint-config-lwc": "^3.0.0",
-    "@salesforce/eslint-plugin-aura": "^2.1.0",
-    "@salesforce/eslint-plugin-lightning": "^0.1.1",
-    "@salesforce/sfdx-lwc-jest": "^4.0.1",
-    "eslint": "^7.29.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jest": "^27.9.0",
-    "lint-staged": "^15.2.0",
     "prettier": "^3.1.1",
     "prettier-plugin-apex": "^2.0.1"
-  },
-  "lint-staged": {
-    "**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}": [
-      "prettier --write"
-    ],
-    "**/{aura,lwc}/**": [
-      "eslint"
-    ]
   }
 }
