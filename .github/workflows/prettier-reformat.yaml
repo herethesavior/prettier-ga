@@ -32,15 +32,7 @@ jobs:
 
           # Process each changed file and check if it's relevant for Prettier formatting
           echo "$CHANGED_FILES" | tr '\0' '\n' | grep -E '\.(js|ts|jsx|tsx|json|css|scss|html|md|cls|apexc|trigger|apex|cmp|page|component|-meta\.xml)$' | \
-          while IFS= read -r file; do
-            # Ensure the file exists before running Prettier on it
-            if [ -f "$file" ]; then
-              echo "Running Prettier on $file"
-              npx prettier --write "$file"
-            else
-              echo "Skipping non-existent file: $file"
-            fi
-          done
+          xargs -I {} sh -c 'if [ -f "{}" ]; then echo "Running Prettier on {}"; npx prettier --write "{}"; else echo "Skipping non-existent file: {}"; fi'
 
       - name: Commit formatted files
         run: |
