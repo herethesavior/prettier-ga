@@ -23,7 +23,8 @@ jobs:
       - name: Get unformatted files
         id: changes
         run: |
-          git diff -z --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref}}...origin/${{ github.event.pull_request.head.ref }} | xargs -0 -I {} npx prettier --write "{}"
+          git diff -z --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }}...origin/${{ github.event.pull_request.head.ref }} | \
+          xargs -0 -I {} npx prettier --write "{}"
 
       - name: Commit formatted files
         run: |
