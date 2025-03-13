@@ -1,11 +1,9 @@
 {
+  "trailingComma": "none",
   "endOfLine": "lf",
   "useTabs": false,
   "tabWidth": 2,
   "plugins": ["prettier-plugin-apex", "@prettier/plugin-xml"],
-  "trailingComma": "none",
-  "bracketSpacing": true,
-  "bracketSameLine": true,
   "overrides": [
     {
       "files": "*.{cls,apexc,trigger}",
@@ -13,7 +11,7 @@
         "printWidth": 100,
         "useTabs": false,
         "tabWidth": 4,
-        "apexInsertFinalNewline": false
+        "apexInsertFinalNewline": true
       }
     },
     {
@@ -22,19 +20,23 @@
         "printWidth": 100,
         "useTabs": false,
         "tabWidth": 4,
-        "apexInsertFinalNewline": false,
+        "apexInsertFinalNewline": true,
         "parser": "apex-anonymous"
       }
     },
     {
       "files": "**/lwc/**/*.html",
       "options": {
-        "parser": "lwc"
+        "parser": "lwc",
+        "bracketSameLine": true
       }
     },
     {
       "files": "*.{cmp,page,component}",
-      "options": { "parser": "html" }
+      "options": {
+        "parser": "html",
+        "bracketSameLine": true
+      }
     },
     {
       "files": "*-meta.xml",

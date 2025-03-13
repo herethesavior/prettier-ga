@@ -10,17 +10,24 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.sha }}
+
       - name: Install NodeJS
         uses: actions/setup-node@v3
         with:
           node-version: "18"
           cache: "npm"
+
       - name: Install dependencies
         run: npm ci
+
       - name: Get unformatted files
         id: changes
         run: |
-          git diff -z --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref}}...origin/${{ github.event.pull_request.head.ref }} | xargs -0 -I {} npx prettier --write "{}"
+          # Fetch changed files and run Prettier only on relevant file types
+          git diff -z --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }}...origin/${{ github.event.pull_request.head.ref }} | \
+          grep -E '\.(js|ts|jsx|tsx|json|css|scss|html|md|cls|apexc|trigger|apex|cmp|page|component|-meta\.xml)$' | \
+          xargs -0 -I {} npx prettier --write "{}"
+
       - name: Commit formatted files
         run: |
           git config --local user.email "$(git log --format='%ae' HEAD^!)"
