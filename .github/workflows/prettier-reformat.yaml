@@ -23,8 +23,15 @@ jobs:
       - name: Get unformatted files
         id: changes
         run: |
-          # Fetch changed files and run Prettier only on relevant file types
-          git diff -z --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }}...origin/${{ github.event.pull_request.head.ref }} | \
+          # Fetch changed files
+          CHANGED_FILES=$(git diff -z --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }}...origin/${{ github.event.pull_request.head.ref }})
+
+          # Echo all changed files to the console
+          echo "Changed files in this PR:"
+          echo "$CHANGED_FILES"
+
+          # Run Prettier only on relevant file types
+          echo "$CHANGED_FILES" | \
           grep -E '\.(js|ts|jsx|tsx|json|css|scss|html|md|cls|apexc|trigger|apex|cmp|page|component|-meta\.xml)$' | \
           xargs -0 -I {} npx prettier --write "{}"
 
