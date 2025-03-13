@@ -30,10 +30,12 @@ jobs:
           echo "Changed files in this PR:"
           echo "$CHANGED_FILES"
 
-          # Run Prettier only on relevant file types
-          echo "$CHANGED_FILES" | \
-          grep -E '\.(js|ts|jsx|tsx|json|css|scss|html|md|cls|apexc|trigger|apex|cmp|page|component|-meta\.xml)$' | \
-          xargs -0 -I {} npx prettier --write "{}"
+          # Process each changed file and check if it's relevant for Prettier formatting
+          echo "$CHANGED_FILES" | tr '\0' '\n' | grep -E '\.(js|ts|jsx|tsx|json|css|scss|html|md|cls|apexc|trigger|apex|cmp|page|component|-meta\.xml)$' | \
+          while IFS= read -r file; do
+            echo "Running Prettier on $file"
+            npx prettier --write "$file"
+          done
 
       - name: Commit formatted files
         run: |
