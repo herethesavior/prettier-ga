@@ -45,6 +45,7 @@
         "tabWidth": 4,
         "useTabs": false,
         "bracketSameLine": true,
+        "xmlSelfClosingSpace": false,
         "embeddedLanguageFormatting": "off",
         "xmlWhitespaceSensitivity": "strict",
         "parser": "xml"
