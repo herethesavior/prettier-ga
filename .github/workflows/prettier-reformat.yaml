@@ -23,9 +23,7 @@ jobs:
       - name: Get unformatted files
         id: changes
         run: |
-          # Fetch changed files and run Prettier only on relevant file types
           git diff -z --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }}...origin/${{ github.event.pull_request.head.ref }} | \
-          grep -E '\.(js|ts|jsx|tsx|json|css|scss|html|md|cls|apexc|trigger|apex|cmp|page|component|-meta\.xml)$' | \
           xargs -0 -I {} npx prettier --write "{}"
 
       - name: Commit formatted files
