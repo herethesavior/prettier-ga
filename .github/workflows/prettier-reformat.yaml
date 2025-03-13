@@ -1,6 +1,6 @@
 name: validate-pull-request
 on:
-  - pull_request
+  pull_request:
 jobs:
   format-source-code:
     runs-on: ubuntu-latest
@@ -8,26 +8,39 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-depth: 2 # Ensure git history is available
           ref: ${{ github.event.pull_request.head.sha }}
-      - name: Install NodeJS
+
+      - name: Install Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "18"
           cache: "npm"
+
       - name: Install dependencies
         run: npm ci
-      - name: Get unformatted files
-        id: changes
+
+      - name: Check formatting with Prettier
+        run: npx prettier --check .
+
+      - name: Get unformatted files and format
+        id: format
         run: |
-          git diff -z --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref}}...origin/${{ github.event.pull_request.head.ref }} | xargs -0 -I {} npx prettier --write "{}"
+          UNFORMATTED_FILES=$(git diff --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }}...origin/${{ github.event.pull_request.head.ref }})
+          if [[ -n "$UNFORMATTED_FILES" ]]; then
+            echo "Formatting files..."
+            echo "$UNFORMATTED_FILES" | xargs npx prettier --write
+            echo "changes=true" >> $GITHUB_ENV
+          else
+            echo "No formatting needed."
+            echo "changes=false" >> $GITHUB_ENV
+          fi
+
       - name: Commit formatted files
+        if: env.changes == 'true'
         run: |
           git config --local user.email "$(git log --format='%ae' HEAD^!)"
           git config --local user.name "$(git log --format='%an' HEAD^!)"
           git add .
-          if [ -z "$(git status --porcelain)" ]; then
-            exit 0
-          fi
           git commit -m "chore: format source code with Prettier"
-          git push origin HEAD:${{ github.event.pull_request.head.ref }}
+          git push --force-with-lease origin HEAD:${{ github.event.pull_request.head.ref }}
