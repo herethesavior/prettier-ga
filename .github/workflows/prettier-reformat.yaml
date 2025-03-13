@@ -23,16 +23,7 @@ jobs:
       - name: Get unformatted files
         id: changes
         run: |
-          # Fetch changed files
-          CHANGED_FILES=$(git diff -z --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }}...origin/${{ github.event.pull_request.head.ref }})
-
-          # Echo all changed files to the console
-          echo "Changed files in this PR:"
-          echo "$CHANGED_FILES"
-
-          # Process each changed file and check if it's relevant for Prettier formatting
-          echo "$CHANGED_FILES" | tr '\0' '\n' | grep -E '\.(js|ts|jsx|tsx|json|css|scss|html|md|cls|apexc|trigger|apex|cmp|page|component|-meta\.xml)$' | \
-          xargs -I {} sh -c 'if [ -f "{}" ]; then echo "Running Prettier on {}"; npx prettier --write "{}"; else echo "Skipping non-existent file: {}"; fi'
+          git diff -z --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref}}...origin/${{ github.event.pull_request.head.ref }} | xargs -0 -I {} npx prettier --write "{}"
 
       - name: Commit formatted files
         run: |
