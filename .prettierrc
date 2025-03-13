@@ -32,7 +32,9 @@
     },
     {
       "files": "*.{cmp,page,component}",
-      "options": { "parser": "html" }
+      "options": {
+        "parser": "html"
+      }
     },
     {
       "files": "*-meta.xml",
@@ -41,9 +43,7 @@
         "tabWidth": 4,
         "useTabs": false,
         "bracketSameLine": true,
-        "xmlSelfClosingSpace": false,
         "embeddedLanguageFormatting": "off",
-        "xmlWhitespaceSensitivity": "strict",
         "parser": "xml"
       }
     }
