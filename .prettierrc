@@ -39,7 +39,7 @@
       }
     },
     {
-      "files": "**/*-meta.xml"
+      "files": "**/*-meta.xml",
       "options": {
         "semi": false,
         "tabWidth": 4,
