@@ -64,12 +64,13 @@ Add a `.prettierrc` file at the root of your repository with the following confi
   "endOfLine": "lf",
   "useTabs": false,
   "tabWidth": 2,
+  "printWidth": 120,
   "plugins": ["prettier-plugin-apex", "@prettier/plugin-xml"],
   "overrides": [
     {
       "files": "*.{cls,apexc,trigger}",
       "options": {
-        "printWidth": 100,
+        "printWidth": 120,
         "useTabs": false,
         "tabWidth": 4,
         "apexInsertFinalNewline": true
@@ -78,7 +79,7 @@ Add a `.prettierrc` file at the root of your repository with the following confi
     {
       "files": "*.apex",
       "options": {
-        "printWidth": 100,
+        "printWidth": 120,
         "useTabs": false,
         "tabWidth": 4,
         "apexInsertFinalNewline": true,
@@ -88,6 +89,7 @@ Add a `.prettierrc` file at the root of your repository with the following confi
     {
       "files": "**/lwc/**/*.html",
       "options": {
+        "printWidth": 120,
         "parser": "lwc",
         "bracketSameLine": true
       }
@@ -95,6 +97,7 @@ Add a `.prettierrc` file at the root of your repository with the following confi
     {
       "files": "*.{cmp,page,component}",
       "options": {
+        "printWidth": 120,
         "parser": "html",
         "bracketSameLine": true
       }
@@ -102,6 +105,7 @@ Add a `.prettierrc` file at the root of your repository with the following confi
     {
       "files": "*-meta.xml",
       "options": {
+        "printWidth": 100,
         "tabWidth": 4,
         "useTabs": false,
         "bracketSameLine": true,
