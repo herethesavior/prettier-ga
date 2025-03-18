@@ -11,7 +11,6 @@ This GitHub repository includes a GitHub Action that automatically reformats cod
   - `.js`, `.ts`, `.jsx`, `.tsx` (JavaScript, TypeScript, JSX, TSX files for LWC and other related front-end code)
   - `.json` (metadata, configuration files)
   - `.css`, `.scss`, `.html` (stylesheets and HTML files for LWC)
-  - `.md` (Markdown files)
   - `.cls` (Apex classes)
   - `.apexc`, `.trigger`, `.apex` (Apex classes and triggers)
   - `.cmp`, `.page`, `.component` (Aura components, Visualforce pages, and LWC)
