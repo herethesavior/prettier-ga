@@ -8,14 +8,14 @@ export default class GwaShowDialogConfirmation extends LightningElement {
   @api action = ""; //action to be performed on confirm
   @api variant = ""; // confirm button variant
 
-confirmClick() {
-const confirmEvent = new CustomEvent("confirmation", {
-  detail: { action: this.action }
-  });
-  this.dispatchEvent(confirmEvent);
-}
-closeModal() {
-  console.log("closeModal");
-  this.dispatchEvent(new CustomEvent("close"));
-}
+  confirmClick() {
+    const confirmEvent = new CustomEvent("confirmation", {
+      detail: { action: this.action }
+    });
+    this.dispatchEvent(confirmEvent);
+  }
+  closeModal() {
+    console.log("closeModal");
+    this.dispatchEvent(new CustomEvent("close"));
+  }
 }
